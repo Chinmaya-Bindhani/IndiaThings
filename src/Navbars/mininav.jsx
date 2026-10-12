@@ -2,9 +2,9 @@ import { Store, LifeBuoy, Globe, ChevronDown } from 'lucide-react'
 
 function MiniNav() {
   return (
-    <div className="flex h-[37px] items-center bg-[#0a0a0a] px-4 text-sm text-white md:px-[7.2vw]">
-      <p className="mr-auto text-m text-neutral-400">
-        Free delivery on orders over <strong className="font-bold">$99.00</strong>
+    <div className="flex h-[35px] items-center bg-[#0a0a0a] px-4 text-sm text-white md:px-[7.2vw]">
+      <p className="mr-auto text-l text-neutral-300">
+        Free delivery on orders over - <strong className="font-bold">$99.00</strong>
       </p>
 
       <ul className="hidden items-center gap-5 font-mono text-xs uppercase tracking-widest md:flex">
