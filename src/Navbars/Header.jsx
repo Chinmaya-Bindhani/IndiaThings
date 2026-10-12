@@ -4,11 +4,13 @@ import CategoryNav from './categories'
 
 function Header() {
   return (
-    <header>
+    <>
       <MiniNav />
-      <MainNav />
-      <CategoryNav />
-    </header>
+      <header className="sticky top-0 z-50">
+        <MainNav />
+        <CategoryNav />
+      </header>
+    </>
   )
 }
 

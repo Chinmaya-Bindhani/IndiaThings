@@ -2,7 +2,7 @@ import { Search, User, Heart, ShoppingCart } from "lucide-react";
 import { Link } from 'react-router-dom'
 function MainNav() {
   return (
-    <div className="flex h-[65px] border border-neutral-200 items-center justify-between bg-white px-4 md:px-[7.2vw]">
+    <div className=" sticky top-0 z-index[50]  flex h-[65px] border border-neutral-200 items-center justify-between bg-white px-4 md:px-[7.2vw]">
       <div>
         <Link to="/" className="flex items-center gap-2">
           <img src="/logo.png" alt="Mercur logo" className="h-15 w-15" />
