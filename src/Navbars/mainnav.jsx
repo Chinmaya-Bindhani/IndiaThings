@@ -31,13 +31,13 @@ function MainNav() {
 
       <div>
         <div className="flex items-center gap-6">
-          <a
-            href="#"
+          <Link
+            to="/login"
             className="flex items-center gap-2 font-mono text-sm uppercase tracking-widest hover:opacity-75"
           >
             <User size={20} />
             <span>Sign In</span>
-          </a>
+          </Link>
           <button
             type="button"
             aria-label="Wishlist"
