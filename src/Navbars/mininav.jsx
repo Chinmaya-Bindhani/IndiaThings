@@ -11,7 +11,7 @@ function MiniNav() {
         <li>
           <a href="#" className="flex items-center gap-1.5 hover:opacity-75">
             <Store size={16} />
-            <span>Sell on Mercur</span>
+            <span>Sell on CartWell</span>
           </a>
         </li>
         <li>

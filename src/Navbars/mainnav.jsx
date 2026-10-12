@@ -1,7 +1,7 @@
 import { Search, User, Heart, ShoppingCart } from "lucide-react";
 function MainNav() {
   return (
-    <div className="flex h-[65px] border border-neutral-300 items-center justify-between bg-white px-4 md:px-[7.2vw]">
+    <div className="flex h-[65px] border border-neutral-200 items-center justify-between bg-white px-4 md:px-[7.2vw]">
       <div>
         <a href="/" className="flex items-center gap-2">
           <img src="/logo.png" alt="Mercur logo" className="h-15 w-15" />
