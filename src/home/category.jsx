@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 
 const categories = [
-  { name: 'Audio Essentials', image: '/cat-audio.png', to: '/' },
-  { name: 'Power & Charging', image: '/cat-power.png', to: '/' },
-  { name: 'Desk Accessories', image: '/cat-desk.png', to: '/' },
-  { name: 'Smart Living', image: '/cat-smart.png', to: '/' },
+  { name: 'Audio Essentials', image: '/airpods.png', to: '/' },
+  { name: 'Power & Charging', image: '/magsafe.png', to: '/' },
+  { name: 'Desk Accessories', image: '/desk.png', to: '/' },
+  { name: 'Smart Living', image: '/watch.png', to: '/' },
 ]
 
 function ShopCategory() {
@@ -15,7 +15,7 @@ function ShopCategory() {
       <div className="flex items-end justify-between border-b border-neutral-200 pb-4">
         <div>
           <p className="font-mono text-[10px] uppercase tracking-widest text-neutral-400">
-            Curated departments
+            Curated department
           </p>
           <h2 className="mt-1 text-2xl font-bold tracking-tight">
             Shop by Category
@@ -38,7 +38,7 @@ function ShopCategory() {
             to={cat.to}
             className="group bg-neutral-100 p-5"
           >
-            <div className="flex aspect-square items-center justify-center bg-[#dedcf2]">
+            <div className="flex aspect-square items-center justify-center ">
               <img
                 src={cat.image}
                 alt={cat.name}
