@@ -47,3 +47,19 @@ jobs:
             dockerchinmaya/indiathings-frontend:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      - name: Deploy image to EC2
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            sudo docker pull dockerchinmaya/indiathings-frontend:${{ github.sha }}
+            sudo docker stop cartwell-frontend || true
+            sudo docker rm cartwell-frontend || true
+            sudo docker run -d \
+              --name cartwell-frontend \
+              --restart unless-stopped \
+              -p 80:80 \
+              dockerchinmaya/indiathings-frontend:${{ github.sha }}
