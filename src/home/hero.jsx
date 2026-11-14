@@ -71,7 +71,7 @@ function Hero() {
             <p className="font-mono text-[10px] uppercase tracking-widest text-neutral-400">
               MSRP
             </p>
-            <p className="font-mono text-sm font-semibold">$389.00</p>
+            <p className="font-mono text-sm font-semibold">$400.00</p>
           </div>
         </div>
       </div>
