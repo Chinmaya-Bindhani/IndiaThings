@@ -2,9 +2,9 @@ name: CI/CD
 
 on:
   push:
-    branches: [feature/chinmay]
+    branches: [main]
   pull_request:
-    branches: [feature/chinmay]
+    branches: [main]
 
 permissions:
   contents: read
@@ -26,7 +26,7 @@ jobs:
 
   publish:
     needs: ci
-    if: github.event_name == 'push' && github.ref == 'refs/heads/feature/chinmay'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -50,7 +50,7 @@ jobs:
 
   deploy:
     needs: [ci, publish]
-    if: github.event_name == 'push' && github.ref == 'refs/heads/feature/chinmay'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     # The EC2 self-hosted runner performs the deployment locally, so GitHub
     # does not need inbound SSH access to the instance.
     runs-on: [self-hosted, Linux, X64]
