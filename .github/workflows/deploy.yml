@@ -29,7 +29,7 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     # The EC2 self-hosted runner performs the deployment locally, so GitHub
     # does not need inbound SSH access to the instance.
-    runs-on: [self-hosted, Linux, X64, ec2-deploy]
+    runs-on: [self-hosted, Linux, X64]
     steps:
       - name: Deploy image on EC2
         env:
