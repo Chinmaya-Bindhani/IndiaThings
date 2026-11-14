@@ -65,7 +65,7 @@ function Hero() {
             <p className="font-mono text-[10px] uppercase tracking-widest text-neutral-400">
               Featured product
             </p>
-            <p className="text-sm font-semibold">Bhakta hari Studio Pro ANC</p>
+            <p className="text-sm font-semibold">Cartwell Studio Pro ANC</p>
           </div>
           <div className="border-l border-neutral-200 pl-6">
             <p className="font-mono text-[10px] uppercase tracking-widest text-neutral-400">
