@@ -27,39 +27,21 @@ jobs:
   deploy:
     needs: ci
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
+    # The EC2 self-hosted runner performs the deployment locally, so GitHub
+    # does not need inbound SSH access to the instance.
+    runs-on: [self-hosted, Linux, X64, ec2-deploy]
     steps:
-      - uses: actions/checkout@v4
-      - uses: docker/setup-buildx-action@v3
-      - uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Deploy image on EC2
+        env:
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          image="dockerchinmaya/indiathings-frontend:${IMAGE_TAG}"
+          docker pull "$image"
 
-      - uses: docker/build-push-action@v6
-        with:
-          context: .
-          push: true
-          build-args: |
-            VITE_API_URL=${{ vars.VITE_API_URL }}
-          tags: |
-            dockerchinmaya/indiathings-frontend:latest
-            dockerchinmaya/indiathings-frontend:${{ github.sha }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-
-      - name: Deploy image to EC2
-        uses: appleboy/ssh-action@v1.2.0
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_SSH_KEY }}
-          script: |
-            sudo docker pull dockerchinmaya/indiathings-frontend:${{ github.sha }}
-            sudo docker stop cartwell-frontend || true
-            sudo docker rm cartwell-frontend || true
-            sudo docker run -d \
-              --name cartwell-frontend \
-              --restart unless-stopped \
-              -p 80:80 \
-              dockerchinmaya/indiathings-frontend:${{ github.sha }}
+          docker rm -f cartwell-frontend 2>/dev/null || true
+          docker run -d \
+            --name cartwell-frontend \
+            --restart unless-stopped \
+            -p 80:80 \
+            "$image"
